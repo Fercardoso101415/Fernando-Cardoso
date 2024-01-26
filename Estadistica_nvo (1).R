@@ -1,8 +1,7 @@
 #####################################################################################
-#Programa: Estadistica decriptiva y ANOVA de una via
-#Desarrolladores: Winter Genomics 
-#Evento:  Mini talleres de R
-#Fecha: julio 2020
+Programa: Estadistica decriptiva 
+Desarrollador: Fernando Cardoso Ordoñez
+
 ####################################################################################
 
 #Instalacion de librerias
