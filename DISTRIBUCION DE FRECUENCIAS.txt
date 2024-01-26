@@ -1,0 +1,118 @@
+DISTRIBUCION DE FRECUENCIAS 
+
+1. Distribución de frecuencia
+También es conocido como tablas de frecuencia y de acuerdo con Triola (2013)
+"Indica cómo un conjunto de datos se divide en varias categorías (o clases) al alistar
+todas las categorías junto con el número de calores de los datos que hay en cada
+una." (p. 47)
+Las distribuciones de frecuencias son tablas en que se dispone las modalidades de la variable por filas. 
+En las columnas se dispone el número de ocurrencias por cada valor, porcentajes, etc. La finalidad de las 
+agrupaciones en frecuencias es facilitar la obtención de la información que contienen los datos.
+
+La distribución de frecuencias, en otras palabras, es la manera en la que se ordena una serie de
+ observaciones en diferentes grupos, y normalmente en modo ascendente o descendente.
+
+
+Ejemplo 1: Pulsaciones de hombres y mujeres1
+Los médicos utilizan el pulso cardiaco para evaluar la salud de los pacientes. Cuando
+el pulso tiene una frecuencia demasiado baja o demasiado elevada, esto podría
+indicar que existe algún problema médico, ya sea Infección o desidratación.
+1. Procedimiento para la construcción de una tabla de frecuencia
+Triola (2013) enumera 5 pasos para realizar la construcción de una tabla de
+Intervalos: En los números
+reales, los intervalos se
+representan por corchetes. Los
+corchetes cerrados significan
+que se incluyen los extremos y
+los abiertos significan que se
+excluyen los extremos.
+6
+frecuencias, la cual se detallan en los puntos siguientes.
+i) Determine el número de clases que desea, el cual se recomienda que se
+encuentre entre 5 y 20. Debe tomar en consideración que el número que se elija
+afectará si se trabaja con cifras enteras.
+ii) Calcular la anchura de la clase. Esto se realiza con base en la siguiente fórmula:
+
+
+
+El resultado puede ser redondeado, normalmente hacia arriba, sin embargo,
+puede modificar el número de clases, elegido en el paso (i) para obtener números
+más convenientes.
+iii) Escoger un número que corresponda al límite inferior de la clase. Este número
+puede ser menor o igual al dato mínimo.
+iv) Utilizando el límite inferior y el ancho de la clase realice cada una de las clases,
+sumando al límite inferior de cada una de las clases, el ancho calculado.
+v) Anote las clases en una tabla para iniciar el conteo.
+
+DISTRIBUCION DE FRECUENCIAS
+
+Usada principalmente para reunir y resumir una gran cantidad de datos. De tal manera que
+ sea interpretable facilmente para el lector.
+
+Para obtener los calculos de una distribución de frecuencias haremos uso de algunos paquetes.
+
+Ingresamos el conjunto de datos
+
+x<-c(61,33,35,74,48,53,53,48,23,19,15,57,72,40,27,25,75,66,34,27,38,16,42,57,27,59,37,63,71,48)
+
+#Debera instalar el paquete que vamos a llamar
+library(fdth) # carga la extensión fdth (para el calculo de distribución de frecuencias.
+
+dist <- fdt(x,breaks="Sturges") # calcula la distribución de frecuencias utilizando la regla Sturge
+
+dist #nos brinda una tabla con los calculos de la distribución de frecuencias.
+
+
+#Donde
+#f= frecuencia absoluta
+#rf= frecuencia relativa
+#rf(%) frecuencia relativa porcentual
+#cf= frecuencia acumulada
+#cf(%)=frecuencia acumulada porcentual
+
+par(mfrow=c(3,2)) # particiona mi ventana grafica en 3x2.
+hist(x, breaks = "Sturges") #histograma utilizando el numero de clases según Sturge
+
+plot(dist, type="cfh")   #histograma de frecuencias acumulada
+
+
+plot(dist, type="cfp")   #poligono de frecuencias acumulado
+
+
+plot(dist, type="fh", col="blue") #si desea añadir color a su grafico
+
+
+#Utilice el set de datos que presenta R.  Para visualizarlos utilice la siguiente función
+data()  # visualiza los datos de R y asociados a las extensiones que ha cargado
+
+Loblolly #nombre del set de datos que utilizaremos
+
+
+Para crear la distribución de frecuencia, buscamos primeramente el rango de los valores de la variable de interes, en nuestro caso trabajaremos con la variable “age”.
+
+datosfreq<- Loblolly $ age #utilizamos el simbolo de $ para separar de los datos la variable de interes.
+datosfreq
+
+range(datosfreq) #observamos el rango de duración, en nuestro caso, va de 3 a 25
+
+dist1 <- fdt(Loblolly $ age,breaks="Sturges") 
+
+dist1
+
+
+#Si quisieramos utilizar un numero de clases diferente utilizamos el argumento k.
+
+dist3 <- fdt(Loblolly $ age, k=9) #utilizamos k para determinar el numero de clases deseado.
+
+dist3
+
+
+ventas<-read.csv("C:/Users/user/Desktop/Datos Compras.csv")
+productos<-table(ventas$Producto)
+productos
+library(qcc)
+tabla<-pareto.chart(productos,col=rainbow(length(productos)))
+write.csv(tabla,"tabla de frecuencias.csv")
+
+
+
